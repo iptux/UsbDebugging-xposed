@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+UsbDebugging - Deny USB debugging on new computers
+Copyright (C) 2019  Tommy Alex  <iptux7@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+	<string name="app_name">USB Debugging</string>
+	<string name="app_description">Deny USB debugging on new computers</string>
+	<string name="pref_title_usb_debugging">USB Debugging</string>
+	<string name="pref_deny_usb_debugging">deny_usb_debugging</string>
+	<string name="pref_title_deny_usb_debugging">Deny USB Debugging</string>
+	<string name="pref_title_about">About</string>
+	<string name="pref_title_author">Author</string>
+	<string name="pref_title_email">E-mail</string>
+	<string name="pref_title_url">Source Code</string>
+	<string name="text_url" translatable="false">https://github.com/iptux/UsbDebugging-xposed</string>
+	<string name="text_author" translatable="false">Tommy Alex</string>
+	<string name="text_email" translatable="false">iptux7@gmail.com</string>
+	<string name="text_mailto" translatable="false">mailto:iptux7@gmail.com</string>
+</resources>
