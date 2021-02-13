@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		>
 		<SwitchPreference
 			android:title="@string/pref_title_deny_usb_debugging"
-			android:summary="@string/app_description"
+			android:summary="@string/pref_summery_deny_usb_debugging"
 			android:key="@string/pref_deny_usb_debugging"
 			android:defaultValue="true"
 			/>
