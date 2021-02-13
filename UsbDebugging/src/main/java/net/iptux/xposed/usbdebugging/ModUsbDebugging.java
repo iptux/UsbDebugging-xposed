@@ -18,6 +18,8 @@
 
 package net.iptux.xposed.usbdebugging;
 
+import android.os.Build;
+
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -27,6 +29,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class ModUsbDebugging implements IXposedHookLoadPackage {
 	private static final String PACKAGE_ANDROID = "android";
 	private static final String USB_DEBUGGING_MANAGER_SERVICE = "com.android.server.usb.UsbDebuggingManager";
+	private static final String ADB_DEBUGGING_MANAGER_SERVICE = "com.android.server.adb.AdbDebuggingManager";
 
 	private static Settings sSettings = Settings.getInstance();
 
@@ -34,7 +37,14 @@ public class ModUsbDebugging implements IXposedHookLoadPackage {
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
 		if (PACKAGE_ANDROID.equals(lpparam.packageName)) {
 			Utility.d("init");
-			findAndHookMethod(USB_DEBUGGING_MANAGER_SERVICE, lpparam.classLoader, "startConfirmation", String.class, String.class, new startConfirmationHook());
+			if (Build.VERSION.SDK_INT >= 30) {
+				findAndHookMethod(ADB_DEBUGGING_MANAGER_SERVICE, lpparam.classLoader, "startConfirmationForNetwork", String.class, String.class, new startConfirmationHook());
+				findAndHookMethod(ADB_DEBUGGING_MANAGER_SERVICE, lpparam.classLoader, "startConfirmationForKey", String.class, String.class, new startConfirmationHook());
+			} else if (Build.VERSION.SDK_INT >= 29) {
+				findAndHookMethod(ADB_DEBUGGING_MANAGER_SERVICE, lpparam.classLoader, "startConfirmation", String.class, String.class, new startConfirmationHook());
+			} else {
+				findAndHookMethod(USB_DEBUGGING_MANAGER_SERVICE, lpparam.classLoader, "startConfirmation", String.class, String.class, new startConfirmationHook());
+			}
 		}
 	}
 
@@ -44,8 +54,12 @@ public class ModUsbDebugging implements IXposedHookLoadPackage {
 			sSettings.reload();
 			if (sSettings.isDenyUsbDebugging()) {
 				param.setResult(null);
-				Utility.log("denyUsbDebugging: fingerprints=%s", (String) param.args[1]);
-				XposedHelpers.callMethod(param.thisObject, "denyUsbDebugging");
+				Utility.log("deny: %s", (String) param.args[1]);
+				if (Build.VERSION.SDK_INT >= 29) {
+					XposedHelpers.callMethod(param.thisObject, "denyDebugging");
+				} else {
+					XposedHelpers.callMethod(param.thisObject, "denyUsbDebugging");
+				}
 			}
 		}
 	}
