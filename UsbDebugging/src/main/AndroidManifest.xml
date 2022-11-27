@@ -52,6 +52,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
 			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
 		</activity>
 	</application>
 
