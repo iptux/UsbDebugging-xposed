@@ -39,6 +39,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:name="xposedscope"
 			android:value="android"
 			/>
+		<meta-data
+			android:name="xposedsharedprefs"
+			android:value="true"
+			/>
 
 		<activity
 			android:name=".SettingsActivity"
