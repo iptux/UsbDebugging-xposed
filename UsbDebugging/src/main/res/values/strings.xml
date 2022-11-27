@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="app_name">USB Debugging</string>
 	<string name="app_description">Deny USB debugging on new computers</string>
 	<string name="pref_title_usb_debugging">USB Debugging</string>
+	<string name="pref_title_module_scope">Module Scope</string>
+	<string name="pref_summery_module_scope">You should enable this module for Android System (package name: android).</string>
 	<string name="pref_deny_usb_debugging">deny_usb_debugging</string>
 	<string name="pref_title_deny_usb_debugging">Deny USB Debugging</string>
 	<string name="pref_summery_deny_usb_debugging">If this option as no effect, you may need to disable this module and then reboot to allow debugging again.</string>

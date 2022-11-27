@@ -20,6 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<PreferenceCategory
 		android:title="@string/pref_title_usb_debugging"
 		>
+		<Preference
+			android:title="@string/pref_title_module_scope"
+			android:summary="@string/pref_summery_module_scope"
+			/>
 		<SwitchPreference
 			android:title="@string/pref_title_deny_usb_debugging"
 			android:summary="@string/pref_summery_deny_usb_debugging"
