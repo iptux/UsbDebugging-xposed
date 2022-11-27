@@ -31,4 +31,3 @@ $(eval $(call GRADLE_TARGET,uninstallr,uninstallRelease,$(1)))
 endef
 
 $(call GRADLE_ANDROID,)
-$(call GRADLE_ANDROID,app)
