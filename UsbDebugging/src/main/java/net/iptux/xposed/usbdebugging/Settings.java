@@ -35,6 +35,9 @@ class Settings {
 	XSharedPreferences prefs;
 	private Settings() {
 		prefs = new XSharedPreferences(BuildConfig.APPLICATION_ID);
+		if (!prefs.makeWorldReadable()) {
+			Utility.log("WARN: pref not world readable!");
+		}
 	}
 
 	void reload() {
