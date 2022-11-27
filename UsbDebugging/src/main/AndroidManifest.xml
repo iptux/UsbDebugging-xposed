@@ -35,6 +35,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:name="xposeddescription"
 			android:value="@string/app_description"
 			/>
+		<meta-data
+			android:name="xposedscope"
+			android:value="android"
+			/>
 
 		<activity
 			android:name=".SettingsActivity"
