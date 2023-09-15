@@ -30,6 +30,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:key="@string/pref_deny_usb_debugging"
 			android:defaultValue="true"
 			/>
+		<SwitchPreference
+			android:title="@string/pref_title_temporary_allow"
+			android:summary="@string/pref_summery_temporary_allow"
+			android:key="@string/pref_temporary_allow"
+			android:defaultValue="true"
+			/>
+		<EditTextPreference
+			android:title="@string/pref_title_temporary_allow_interval"
+			android:dependency="@string/pref_temporary_allow"
+			android:key="@string/pref_temporary_allow_interval"
+			android:inputType="number"
+			android:defaultValue="10"
+			/>
 	</PreferenceCategory>
 	<PreferenceCategory
 		android:title="@string/pref_title_about"

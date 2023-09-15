@@ -21,7 +21,9 @@ package net.iptux.xposed.usbdebugging;
 import de.robv.android.xposed.XSharedPreferences;
 
 class Settings {
-	private static final String PREF_DENY_USB_DEBUGGING = "deny_usb_debugging";
+	static final String PREF_DENY_USB_DEBUGGING = "deny_usb_debugging";
+	static final String PREF_TEMPORARY_ALLOW = "temporary_allow";
+	static final String PREF_TEMPORARY_ALLOW_INTETVAL = "temporary_allow_interval";
 	static final String PREF_VERSION_NAME = "version_name";
 
 	private static class SingletonHelper {

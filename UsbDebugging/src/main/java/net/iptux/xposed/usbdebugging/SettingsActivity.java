@@ -18,16 +18,42 @@
 
 package net.iptux.xposed.usbdebugging;
 
+import android.content.SharedPreferences;
 import android.preference.PreferenceActivity;
 import android.os.Bundle;
+import android.preference.SwitchPreference;
 
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends PreferenceActivity
+		implements SharedPreferences.OnSharedPreferenceChangeListener {
+	SwitchPreference denyUsbDebuggingPreference;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
+		getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 		addPreferencesFromResource(R.xml.preferences);
 
+		denyUsbDebuggingPreference = (SwitchPreference) findPreference(Settings.PREF_DENY_USB_DEBUGGING);
 		findPreference(Settings.PREF_VERSION_NAME).setSummary(BuildConfig.VERSION_NAME);
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		switch (key) {
+		case Settings.PREF_DENY_USB_DEBUGGING:
+			if (!sharedPreferences.getBoolean(key, true)) {
+				scheduleRelock(sharedPreferences);
+			}
+			break;
+		}
+	}
+
+	void scheduleRelock(SharedPreferences sharedPreferences) {
+		if (sharedPreferences.getBoolean(Settings.PREF_TEMPORARY_ALLOW, true)) {
+			String value = sharedPreferences.getString(Settings.PREF_TEMPORARY_ALLOW_INTETVAL, "10");
+			long interval = Long.parseLong(value);
+			RelockRunnable runnable = new RelockRunnable(sharedPreferences, denyUsbDebuggingPreference);
+			findViewById(android.R.id.content).postDelayed(runnable, interval * 1000);
+		}
 	}
 }

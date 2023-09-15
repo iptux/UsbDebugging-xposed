@@ -25,6 +25,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="pref_deny_usb_debugging">deny_usb_debugging</string>
 	<string name="pref_title_deny_usb_debugging">Deny USB Debugging</string>
 	<string name="pref_summery_deny_usb_debugging">If this option as no effect, you may need to disable this module and then reboot to allow debugging again.</string>
+	<string name="pref_title_temporary_allow">Temporary Allow USB Debugging</string>
+	<string name="pref_summery_temporary_allow">re-enable the `Deny USB Debugging\' option after disabled.\nUseful if you want to temporary allow USB debugging.</string>
+	<string name="pref_temporary_allow" translatable="false">temporary_allow</string>
+	<string name="pref_title_temporary_allow_interval">Temporary Allow Interval (seconds)</string>
+	<string name="pref_temporary_allow_interval" translatable="false">temporary_allow_interval</string>
 	<string name="pref_title_about">About</string>
 	<string name="pref_title_author">Author</string>
 	<string name="pref_title_email">E-mail</string>
